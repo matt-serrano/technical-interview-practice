@@ -21,13 +21,13 @@ class RentalSystem:
     
     def _dates_overlap(self, start1, end1, start2, end2):
         if isinstance(start1, str):
-            start1 = datetime.strptime(start1, "&Y-%m-%d").date()
+            start1 = datetime.strptime(start1, "%Y-%m-%d").date()
         if isinstance(end1, str):
             end1 = datetime.strptime(end1, "%Y-%m-%d").date()
         if isinstance(start2, str):
             start2 = datetime.strptime(start2, "%Y-%m-%d").date()
         if isinstance(end2, str):
-            end2 = datetime.strptime(end2, "&Y-&m-&d").date()
+            end2 = datetime.strptime(end2, "%Y-%m-%d").date()
         return start1 <= end2 and start2 <= end1
     
     def rent(self, car, start_date, end_date):
@@ -36,6 +36,6 @@ class RentalSystem:
             if self._dates_overlap(start_date, end_date, existing_start, existing_end):
                 return False
         if car.get_status() == "available":
-            self.rented_cars[car] = {start_date, end_date}
+            self.rented_cars[car] = (start_date, end_date)
             return car.rent()
         return False    
