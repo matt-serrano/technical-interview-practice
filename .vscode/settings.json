@@ -1,15 +1,20 @@
 {
-  "editor.inlineSuggest.enabled": true,
-  "editor.suggest.preview": true,
-  "editor.tabCompletion": "on",
-  "emmet.triggerExpansionOnTab": true,
+  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.showToolbar": "never",
+  "editor.suggest.preview": false,
+  "editor.quickSuggestions": {
+    "comments": "off",
+    "strings": "off",
+    "other": "off"
+  },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.wordBasedSuggestions": "off",
+  "editor.snippetSuggestions": "none",
+  "editor.parameterHints.enabled": false,
+  "editor.tabCompletion": "off",
+  "emmet.triggerExpansionOnTab": false,
   "emmet.includeLanguages": {
     "javascriptreact": "html",
     "typescriptreact": "html"
-  },
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": true,
-    "strings": true
   }
 }
