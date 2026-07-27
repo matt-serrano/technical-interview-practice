@@ -18,4 +18,21 @@ class InventorySystem:
         self.products.append(product)
         return f"Adding {product.product_information()} to inventory system!"
 
+    def active_products(self):
+        active = []
+        for i in self.products:
+            if i.status == "active":
+                active.append(i)
+
+        return active
+
+    def active_products_stock(self):
+        active = self.active_products()
+
+        for i in range(len(active)):
+            if i.quantity <= 0:
+                active.pop(i)
+
+        return active
+
     
