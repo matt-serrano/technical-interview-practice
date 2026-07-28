@@ -51,27 +51,28 @@ class Product:
         return f"Product: {self.name}, ID: {self.id}, Price: {self.price}, Quantity: {self.quantity}, Status: {self.status}."
     
     def add_stock(self, amount):
-        if amount <= 0:
-            return f"Cannot remove 0 or less items!"
+        if self.status != "active":
+            return False
+
+        if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
+            return False
 
         self.quantity += amount
-        return f"{amount} added to {self.name} stock. New quantity is {self.quantity}."
+        return True
 
     def remove_stock(self, amount):
-        if self.stock <= 0 or amount > self.stock:
-            return f"Not enough products!"
+        if self.status != "active":
+            return False
 
-        if amount <= 0:
-            return f"Cannot remove 0 or less items!"
+        if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
+            return False
+
+        if amount > self.quantity:
+            return False
         
         self.quantity -= amount
-        return f"{amount} added to {self.name} stock. New quantity is {self.quantity}."
+        return True
     
     def discontinue(self):
-        answer = input(f"Are you sure you would like to discontinue {self.product}? (y/n) ")
-
-        if answer == "y":
-            self.status = "discontinued"
-            return f"{self.name} has been discontinued!"
-        else:
-            return f"No changes have been made! {self.name} is still active!"
+        self.status = "discontinued"
+        return True
