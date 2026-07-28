@@ -5,11 +5,11 @@ class InventorySystem:
         self.products = []
 
     def lookup_product(self, product_id):
-        for i in self.products:
-            if i.id == product_id:
-                return True
+        for product in self.products:
+            if product.id == product_id:
+                return product
 
-        return False
+        return None
 
     def add_product(self, product):
         if self.lookup_product(product.id) is not None:
