@@ -16,6 +16,18 @@ class Car:
     
     def get_status(self):
         return self._status
+
+    def set_make(self, make):
+        self._make = make
+
+    def set_model(self, model):
+        self._model = model
+
+    def set_year(self, year):
+        self._year = year
+
+    def set_status(self, status):
+        self._status = status
     
     def rent(self):
         if self._status == "available":
